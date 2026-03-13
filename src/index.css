@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* If you want to add custom colors later, you do it here, 
+   but for now, just keep it empty or remove the block. */
+@theme {
+  --color-rsl-blue: #1e3a8a;
+}
+
+/* Base styles for your app */
+body {
+  @apply bg-slate-50 text-slate-900;
+}
