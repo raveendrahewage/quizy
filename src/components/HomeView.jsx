@@ -112,9 +112,12 @@ export default function HomeView({ user, onPlayQuiz }) {
           animate={{ opacity: 1 }}
           className="text-5xl md:text-7xl font-black text-slate-800 dark:text-slate-100 tracking-tight leading-tight"
         >
-          {isFirstVisit ? "Welcome to Quizy," : "Welcome back,"} <br className="hidden md:block"/>
+          {user.isAnonymous 
+            ? "Welcome," 
+            : (isFirstVisit ? "Welcome to Quizy," : "Welcome back,")
+          } <br className="hidden md:block"/>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400 drop-shadow-sm">
-            {user.displayName.split(" ")[0]}!
+            {(user.displayName || 'Guest').split(" ")[0]}!
           </span>
         </motion.h1>
         <motion.p 
@@ -134,7 +137,7 @@ export default function HomeView({ user, onPlayQuiz }) {
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="col-span-2 text-center py-32 bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl rounded-[2.5rem] border border-white/50 dark:border-slate-800/50 shadow-2xl shadow-indigo-500/5 group"
+              className="col-span-2 text-center py-32 bg-white/60 dark:bg-slate-900/40 backdrop-blur-xl rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-2xl shadow-indigo-500/5 group"
             >
               <div className="w-24 h-24 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner group-hover:scale-110 transition-transform duration-500">
                 <Trophy className="w-10 h-10 text-slate-400 dark:text-slate-600" />
@@ -149,9 +152,9 @@ export default function HomeView({ user, onPlayQuiz }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1, duration: 0.5, type: "spring" }}
                 key={quiz.id}
-                className="group bg-white/70 dark:bg-slate-900/70 backdrop-blur-md rounded-[2.5rem] p-8 sm:p-10 shadow-lg shadow-slate-200/50 dark:shadow-black/20 hover:shadow-2xl hover:shadow-indigo-500/20 dark:hover:shadow-indigo-500/10 border border-white dark:border-slate-800 hover:border-indigo-100 dark:hover:border-indigo-900/50 transition-all duration-500 relative overflow-hidden"
+                className="group bg-white/90 dark:bg-slate-900/70 backdrop-blur-md rounded-[2.5rem] p-8 sm:p-10 shadow-lg shadow-slate-200/50 dark:shadow-black/20 hover:shadow-2xl hover:shadow-indigo-500/20 dark:hover:shadow-indigo-500/10 border border-white dark:border-slate-800 hover:border-indigo-100 dark:hover:border-indigo-900/50 transition-all duration-500 relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 p-8 text-indigo-50/50 dark:text-indigo-900/20 group-hover:scale-125 group-hover:-rotate-12 transition-transform duration-700 ease-out z-0 pointer-events-none">
+                <div className="absolute top-0 right-0 p-8 text-indigo-100/50 dark:text-indigo-900/20 group-hover:scale-125 group-hover:-rotate-12 transition-transform duration-700 ease-out z-0 pointer-events-none">
                   <Star className="w-48 h-48 fill-current" />
                 </div>
                 
